@@ -1,0 +1,44 @@
+:root {
+    --new: 50% 50% 50% 50%;
+    --back: radial-gradient(yellow, transparent);
+}
+
+
+.banner {
+    width: 100%;
+    height: 500px;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid black;
+}
+
+.mouse {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: var(--new);
+    background: var(--back);
+    transform: translate3d(-50%, -50%, 0);
+    transition: transform 1.2s cubic-bezier(.02, 1.23, .79, 1.08);
+    /* animation: changeShape 2s forwards; */
+}
+
+.mouse.anim {
+    animation: changeShape 5s forwards;
+}
+
+@keyframes changeShape {
+    100% {
+        border-radius: var(--new);
+        background: var(--back);
+    }
+}
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+

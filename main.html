@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="banner" class="banner">
+        <div id="mouse" class="mouse"></div>
+    </div>
+
+    <!-- <a href="data:application/msword,this%2Cis%20there%21">Click me</a> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        var colours = ["red", "yellow", "green", "blue"];
+        setInterval( () => {
+            var newCorners = "";
+            for (var i = 0; i < 4; i++) {
+                newCorners += Math.floor(Math.random() * 100).toString() + "% ";
+                
+            }
+            let random = Math.floor(Math.random()*4);
+            let colour = colours[random];
+            console.log(newCorners);
+            let back = "radial-gradient("+colour+", transparent)";
+            document.documentElement.style.setProperty('--new', newCorners);
+            document.documentElement.style.setProperty('--back', back);
+            document.getElementById("mouse").classList.add("anim");
+            setTimeout(() => {
+                document.getElementById("mouse").classList.remove("anim"); 
+            }, 5000);
+            // document.getElementById("mouse").classList.remove("anim");
+            
+            
+        }, 10000);
+
+        $(document).on("mousemove", ".banner", function (e){
+            var x = e.clientX;
+            var y = e.clientY;
+            var newX = x - 100;
+            var newY = y - 100;
+            $(".mouse").css("transform", "translate3d("+newX+"px,"+newY+"px,0px)");
+        });
+
+    </script>
+
+</body>
+</html>
